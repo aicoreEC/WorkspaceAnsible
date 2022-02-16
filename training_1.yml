@@ -2,7 +2,7 @@
 - name: copy file managed node 1
   hosts: managed1
   remote_user: worker
-  become: true
+  become: yes
   tasks:
   - name: copy file with managed1
     copy:
@@ -12,7 +12,7 @@
 - name: copy file managed node 2
   hosts: managed2
   remote_user: ansible
-  become: true
+  become: yes
   tasks:
   - name : copy file with managed2
     copy:
