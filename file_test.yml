@@ -13,11 +13,11 @@
   tasks:
   - name: create directory
     file:
-      path: /home/worker/test
+      path: /home/ansible/test
       state: directory
 
   - name: touch file
     file:
-      path: /home/worker/test/test.txt
+      path: /home/ansible/test/test.txt
       state: touch
 
