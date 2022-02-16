@@ -1,4 +1,10 @@
 ---
+- name: ping test
+  hosts: target
+  tasks:
+    name: ping test
+    ping:
+
 - name: touch files test
   hosts: target
   tasks:
@@ -11,4 +17,4 @@
     file:
       path: /home/worker/test/test.txt
       state: touch
-      
+
