@@ -8,7 +8,7 @@
 
 - name: touch files test
   hosts: target
-  remote_user: root
+  remote_user: ansible
   gather_facts: False
   tasks:
   - name: create directory
