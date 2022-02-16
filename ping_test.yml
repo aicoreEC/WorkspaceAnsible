@@ -1,8 +1,7 @@
 ---
 - name: ping test
-  hosts: target
-  gather_facts: false
+  hosts: webserver
+  #gather_facts: false
   tasks:
   - name: ping
     ping:
-    
