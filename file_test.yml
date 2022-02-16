@@ -2,7 +2,7 @@
 - name: ping test
   hosts: target
   tasks:
-    name: ping test
+  - name: ping test
     ping:
 
 - name: touch files test
