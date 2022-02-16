@@ -23,5 +23,5 @@
       state: touch
 
   - name: create file
-    command: "ls -la > /home/worker/test/output.txt"
+    command: "ls -la >> /home/worker/test/output.txt"
     
