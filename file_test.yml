@@ -1,0 +1,14 @@
+---
+- name: touch files test
+  hosts: target
+  tasks:
+  - name: create directory
+    file:
+      path: /home/worker/test
+      state: directory
+
+  - name: touch file
+    file:
+      path: /home/worker/test/test.txt
+      state: touch
+      
