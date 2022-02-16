@@ -9,15 +9,16 @@
 - name: touch files test
   hosts: target
   remote_user: ansible
+  sudo: yes
   gather_facts: False
   tasks:
   - name: create directory
     file:
-      path: /home/ansible/test
+      path: /home/worker/test
       state: directory
 
   - name: touch file
     file:
-      path: /home/ansible/test/test.txt
+      path: /home/worker/test/test.txt
       state: touch
 
