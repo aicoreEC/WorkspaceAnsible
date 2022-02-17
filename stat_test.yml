@@ -1,6 +1,7 @@
 ---
-- name: stat test
+- name: loop test
   hosts: all
+  gather_facts: True
   tasks:
   - name: Get stats of a file
     stat:
@@ -11,4 +12,3 @@
     ansible.builtin.fail:
     msg: "Whoops! file ownership has changed"
   when: st.stat.pw_name != 'root'
-  
