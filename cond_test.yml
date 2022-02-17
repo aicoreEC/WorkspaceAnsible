@@ -13,8 +13,8 @@
 
   - debug:
       msg: "{{ result.stderr }}"
-      when: result.failed is failed
+      when: result == "failed"
 
   - debug:
       msg: "{{ result.stdout }}"
-      when: result.changed is changed
+      when: result == "changed"
