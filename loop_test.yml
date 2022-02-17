@@ -1,7 +1,7 @@
 ---
 - name: loop test
   hosts: all
-  gether_facts: False
+  gather_facts: False
   tasks:
   - debug:
       msg: "{{ item }}"
@@ -9,4 +9,3 @@
     - a
     - b
     - c
-     
