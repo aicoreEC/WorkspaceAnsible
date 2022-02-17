@@ -10,7 +10,7 @@
 
   - name: Shut down CentOS flavored systems
     command: /sbin/shutdown -t now
-    when: ansible_facts[ 'os_family' ] == "CentOS" 
+    when: ansible_facts[ 'distribution' ] == "CentOS" 
     ignore_errors: True
 
   - debug:
