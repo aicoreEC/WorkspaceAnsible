@@ -4,17 +4,14 @@
   gather_facts: False
   tasks:
   - name: shell command - /usr/bin/foo
-    shell: python3 --version
+    shell: /usr/bin/foo
     register: result
     ignore_errors: True
 
   - debug:
-      var=result
-
-  - debug:
       msg: "{{ result.stderr }}"
-      when: result == "failed"
+    when: result is failed
 
   - debug:
       msg: "{{ result.stdout }}"
-      when: result == "changed"
+    when: result is changed
