@@ -5,7 +5,7 @@
   - name: Run myprog
     command: /opt/myprog
     register: result
-    igonore_errors: True
+    ignore_errors: True
 
   - debug:
       var=result
