@@ -2,8 +2,19 @@
 - name: loop test
   hosts: 192.168.0.195
   gather_facts: False
+  vars:
+    score: 95
   tasks:
-  - name: Shut down CentOS flavored systems
-    command: /sbin/shutdown -t now
-    when: ansible_facts[ 'distribution' ] == "CentOS" 
-    
+  - name: score is excellent
+    shell: echo "grade excellent!!!"
+    register: grade
+    when: ( score|int >= 90 )
+
+  - name: score is fail
+    shell: echo "grade excellent!!!"
+    register: grade
+    when: ( score|int < 60 )
+
+  - name: result
+    debug:
+      msg: "{{ grade.stdout }}"
