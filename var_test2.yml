@@ -3,8 +3,9 @@
   hosts: all
   tasks:
   - name: capture output of id command
-    command: id -Z
+    command: id -un
     register: login
 
   - debug:
-      var=login
+      msg="Logged in as user {{ login.stdout }}"
+      #var=login
