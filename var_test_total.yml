@@ -1,0 +1,19 @@
+---
+- name: total variable test
+  hosts: all
+  gather_facts: False
+  vars:
+    message: "Hello, Ansible"
+    hi: "hi ansible"
+    hello: "ansible"
+    file_path: "/home/ansible/temp"
+  tasks:
+  - name: create directory
+    file:
+      path: "{{ file_path }}"
+      state: directory
+      
+  - debug:
+      msg: "{{ message }}"
+      msg: "{{ hi }}"
+      msg: "{{ hello }}"
