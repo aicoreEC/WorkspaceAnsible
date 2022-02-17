@@ -9,9 +9,9 @@
     ignore_errors: True
 
   - debug:
-      msg: "failed"
+      msg: "{{ result.stderr }}"
       when: result is failed
 
   - debug:
-      msg: "changed"
+      msg: "{{ result.stdout }}"
       when: result is changed
