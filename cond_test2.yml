@@ -1,0 +1,9 @@
+---
+- name: loop test
+  hosts: 192.168.0.195
+  gather_facts: False
+  tasks:
+  - name: Shut down CentOS flavored systems
+    command: /sbin/shutdown -t now
+    when: ansible_facts[ 'distribution' ] == "CentOS" 
+    

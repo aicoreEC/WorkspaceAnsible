@@ -8,11 +8,6 @@
     register: result
     ignore_errors: True
 
-  - name: Shut down CentOS flavored systems
-    command: /sbin/shutdown -t now
-    when: ansible_facts[ 'distribution' ] == "CentOS" 
-    ignore_errors: True
-
   - debug:
       var=ansible_facts
 
