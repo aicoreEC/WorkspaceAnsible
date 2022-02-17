@@ -1,0 +1,11 @@
+---
+- name: Excute program 
+  hosts: all
+  tasks:
+  - name: Run myprog
+    command: /opt/myprog
+    register: result
+
+  - debug:
+      var=result
+  
