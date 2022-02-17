@@ -8,11 +8,9 @@
     register: result
     ignore_errors: True
 
-  - name: Configure SELinux to start mysql on any port
-    ansible.posix.seboolean:
-      name: sql_connect_any
-      parsistent: yes
-    when: ansible_selinux.status == "enabled" 
+  - name: Shut down CentOS flavored systems
+    command: /sbin/shutdown -t now
+    when: ansible_facts[ 'os_family' ] == "CentOS" 
     ignore_errors: True
 
   - debug:
