@@ -1,0 +1,10 @@
+---
+- name: variable test
+  hosts: all
+  tasks:
+  - name: capture output of whoami command
+    command: whoami
+    register: userid
+
+  - debug:
+      msg: "current user {{ userid }}"
