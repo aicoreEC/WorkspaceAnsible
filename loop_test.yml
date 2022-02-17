@@ -1,0 +1,12 @@
+---
+- name: loop test
+  hosts: all
+  gether_facts: False
+  tasks:
+  - debug:
+      msg: "{{ item }}"
+    loop:
+    - a
+    - b
+    - c
+     
