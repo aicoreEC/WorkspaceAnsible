@@ -12,10 +12,10 @@
     apt:
       name: apache2, php
       state: present
-    when: ansible_facts[ "os_family" ] == "Debian"
+    when: ansible_facts[ "ansible_distribution" ] == "Ubuntu"
 
   - name: Install Httpd package
     yum:
       name: httpd, php
       state: present
-    when: ansible_facts[ "os_family" ] == "Redhat"
+    when: ansible_facts[ "ansible_distribution" ] == "CentOS"
