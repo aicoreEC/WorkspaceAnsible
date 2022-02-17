@@ -3,7 +3,7 @@
   hosts: 192.168.0.195
   gather_facts: False
   vars:
-    score: 95
+    score: 55
   tasks:
   - name: score is excellent
     shell: echo "grade excellent!!!"
