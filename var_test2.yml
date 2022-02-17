@@ -3,7 +3,7 @@
   hosts: all
   tasks:
   - name: capture output of id command
-    command: id -un
+    command: id -Z
     register: login
 
   - debug:
