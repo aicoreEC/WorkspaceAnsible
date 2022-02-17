@@ -13,10 +13,11 @@
       path: "{{ file_path }}"
       state: directory
       register: result
+      ignore_errors: True
 
   - debug:
-      var=result
-      
+      msg: "{{ result }}"
+
   - debug:
       msg: "{{ message }}"
 
