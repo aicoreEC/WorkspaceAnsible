@@ -21,3 +21,4 @@
     - third
     - test1
     - test2
+    when: not result.stat.exists
