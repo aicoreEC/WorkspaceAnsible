@@ -1,0 +1,19 @@
+---
+- name: loop test
+  hosts: 192.168.0.195
+  gather_facts: False
+  vars:
+    file_path: /home/work/touch_file
+  tasks:
+  - name: create directory
+    file:
+      path: "{{ file_path }}"
+      state: directory
+
+  - name: create file
+    file:
+      path: "{{ file_path }}/{{ item }}.txt"
+    loop:
+    - first
+    - second
+    - third
