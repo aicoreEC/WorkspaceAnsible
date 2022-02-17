@@ -2,23 +2,26 @@
 - name: loop test
   hosts: 192.168.0.195
   remote_user: root
-  gather_facts: False
+  gather_facts: True
   vars:
     file_path: /home/work/touch_file
+    id: ansible
   tasks:
   - name: create directory
     file:
       path: "{{ file_path }}"
       state: directory
 
+  - stat:
+      path: "{{files_path}}/{{id}}.txt"
+      register: result
+
   - name: create file
     file:
       path: "{{ file_path }}/{{ item }}.txt"
       state: touch
     loop:
-    - first
-    - second
-    - third
-    - test1
-    - test2
+    - "{{id}}1" 
+    - "{{id}}2"
+    - "{{id}}3"
     when: not result.stat.exists
