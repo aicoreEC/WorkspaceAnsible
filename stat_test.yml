@@ -4,9 +4,9 @@
   tasks:
   - name: Get stats of a file
     stat:
-    path: /etc/foo.conf
-    register: st
-    
+      path: /etc/foo.conf
+      register: st
+
   - name: Fail if the file does not belong to 'root'
     ansible.builtin.fail:
     msg: "Whoops! file ownership has changed"
