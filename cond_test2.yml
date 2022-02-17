@@ -11,10 +11,9 @@
     when: ( score|int >= 90 )
 
   - name: score is fail
-    shell: echo "grade excellent!!!"
+    shell: echo "grade fail!!!"
     register: grade
     when: ( score|int < 60 )
 
-  - name: result
-    debug:
-      msg: "{{ grade.stdout }}"
+  - debug:
+      msg: "{{ grade }}"
