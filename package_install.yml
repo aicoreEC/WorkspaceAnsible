@@ -1,0 +1,21 @@
+---
+- name: web service package install
+  hosts: 192.168.0.195
+  gather_facts: False
+  tasks:
+  - name: Collect only selected facts
+    ansible.builtin.setup:
+    filter:
+      - 'ansible_distribution'
+
+  - name: Install Apache2 package
+    apt:
+      name: apache2, php
+      state: present
+    when: ansible_facts[ "os_family" ] == "Debian"
+
+  - name: Install Httpd package
+    yum:
+      name: httpd, php
+      state: present
+    when: ansible_facts[ "os_family" ] == "Redhat"
