@@ -14,8 +14,8 @@
     ignore_errors: True
 
   - debug:
-      msg: ansible_facts
-      
+      var=ansible_facts
+
   - debug:
       msg: "{{ result.stderr }}"
     when: result is failed
