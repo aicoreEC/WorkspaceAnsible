@@ -4,7 +4,7 @@
   gather_facts: False
   tasks:
   - name: shell command - /usr/bin/foo
-    shell: /usr/bin/foo
+    shell: python3 --version
     register: result
     ignore_errors: True
 
