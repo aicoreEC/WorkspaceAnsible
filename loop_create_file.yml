@@ -14,6 +14,7 @@
   - name: create file
     file:
       path: "{{ file_path }}/{{ item }}.txt"
+      state: touch
     loop:
     - first
     - second
