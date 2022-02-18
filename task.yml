@@ -1,0 +1,6 @@
+- name: "ls {{ path }}"
+  shell: ls {{ path }}
+  register: result
+
+- debug:
+    msg: "{{ result.stdout }}"
