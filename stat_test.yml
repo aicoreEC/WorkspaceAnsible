@@ -1,14 +1,17 @@
 ---
-- name: loop test
-  hosts: all
-  gather_facts: True
+- name: stat command test
+  hosts: 192.168.0.195
   tasks:
   - name: Get stats of a file
-    stat:
+    ansible.builtin.stat:
       path: /etc/foo.conf
       register: st
 
+  - debug:
+      var: st
+
   - name: Fail if the file does not belong to 'root'
     ansible.builtin.fail:
-    msg: "Whoops! file ownership has changed"
-  when: st.stat.pw_name != 'root'
+      msg: "Whoops! file ownership has changed"
+    when: st.stat.pw_name != 'root'
+  
