@@ -5,7 +5,7 @@
   - name: Get stats of a file
     ansible.builtin.stat:
       path: /etc/hosts
-      register: st
+    register: st
 
   - debug:
       var: st
