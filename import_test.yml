@@ -1,0 +1,9 @@
+---
+- name: main playbook
+  hosts: all
+  tasks:
+  - debug:
+      msg: main playbook
+
+- name: import playbook
+  import_playbook: web.yml

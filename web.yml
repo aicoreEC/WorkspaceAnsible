@@ -1,0 +1,7 @@
+---
+- name: web playbook
+  hosts: all
+  tasks:
+  - debug:
+      msg: web playbook
+  
