@@ -4,9 +4,8 @@
   tasks:
   - name: Get stats of a file
     ansible.builtin.stat:
-      path: /etc/foo.conf
+      path: /etc/hosts
       register: st
-      ignore_errors: True
 
   - debug:
       var: st
