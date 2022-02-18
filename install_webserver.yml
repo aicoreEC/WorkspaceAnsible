@@ -10,6 +10,19 @@
         update_cache: True
       notify:
         - Start Nginx
+      tags:
+        - install
+
+    - debug:
+        var: "{{ ansible_facts }}"
+      tags: install 
+
+    - name: Remove nginx
+      apt:
+        name: nginx
+        state: absent
+      tags:
+        - remove
 
   handlers:
     - name: Start Nginx

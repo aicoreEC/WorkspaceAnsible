@@ -1,13 +1,25 @@
 ---
 - name: handler test
   hosts: all
-  handler:
-    - name: stop message
-      debug:
-        msg: stop play
-
   tasks:
     - name: excute ls
       shell: ls
       notify: 
-        - stop message
+        - "my handler" 
+
+    - name: status sshd
+      shell: systemctl status sshd
+      notify:
+        - "my handler"
+
+  handlers:
+    - name: echo
+      debug:
+        mag: echo handler message 
+      listen: "my handler"
+
+    - name: stop message
+      debug:
+        msg: stop task
+      listen: "my handler"
+

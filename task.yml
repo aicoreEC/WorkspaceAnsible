@@ -4,3 +4,10 @@
 
 - debug:
     msg: "{{ result.stdout }}"
+
+- name: "install {{ package }}"
+  apt:
+    name: "{{ package }}"
+    state: latest
+    update_cache: yes
+    

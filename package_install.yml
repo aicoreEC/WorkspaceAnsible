@@ -1,23 +1,14 @@
 ---
 - name: web service package install
   hosts: 192.168.0.195
-  gather_facts: False
+  #gather_facts: True
   tasks:
-  - name: Collect only selected facts
-    setup:
-      filter:
-      - 'ansible_distribution'
-
-  - debug:
-      var=ansible_facts
-
   - name: Install Apache2 package
     apt:
       upgrade: yes
       update_cache: yes
       name: apache2, php
       state: present
-      ignore_error: True
     when: ansible_facts[ "distribution" ] == "Ubuntu"
 
 

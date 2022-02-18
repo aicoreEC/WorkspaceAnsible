@@ -1,4 +1,5 @@
 ---
+# 기본 loop 이용
 - name: loop test
   hosts: 192.168.0.195
   gather_facts: False
@@ -9,3 +10,44 @@
     - a
     - b
     - c
+
+  # loop key 
+  - name: add server user
+    user:
+      name: "{{ item.name }}"
+      state: present
+      groups: "{{ item.group }}"
+    loop:
+      - { name: "worker1", group: "worker" }      
+      - { name: "worker2", group: "worker" }
+      - { name: "worker3", group: "ansible" }
+
+  # with_* key
+  - name: add server user
+    user:
+      name: "{{ item[ 0 ] }}"
+      state: present
+      groups: "{{ item[ 1 ] }}.*:ALL"
+    #with_item:
+    with_nested:
+      - [ 'worker1', 'worker' ]
+      - [ 'worker2', 'worker' ]
+      - [ 'worker3', 'ansible' ]
+
+  - name: add server user( no loop )
+    user:
+      name: worker1
+      state: present
+      groups: worker
+
+  - name: add server user( no loop )
+    user:
+      name: worker2
+      state: present
+      groups: worker
+
+  - name: add server user( no loop )
+    user:
+      name: worker3
+      state: present
+      groups: ansible

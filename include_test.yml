@@ -6,8 +6,5 @@
   - name: include task
     include: task.yml
     vars:
-      path: /etc/ansible
-    register: result_task
-
-  - debug:
-      msg: "{{ result_task.stdout }}"
+      path: /etc
+      package: git

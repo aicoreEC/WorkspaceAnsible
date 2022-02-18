@@ -1,25 +1,35 @@
 ---
-- name: sample playbook
-  hosts: target
+# play
+- name: sample playbook # 설명을 위한 식별자
+  hosts: target # Inventory에 정의된 그룹
+  gather_facts: True
+  vars:
+    hue_url: "https://cdn.gethue.com/downloads/hue-4.10.0.tgz" 
+    dest_dir: /tmp
+    file_name: hue-4.10.0
+  vars_files:
+    - variable
   tasks:
-          - name: download hue file
+    # task 
+          - name: download hue file # 설명을 위한 식별자
+            # 모듈
             get_url:
-                    url: https://cdn.gethue.com/downloads/hue-4.10.0.tgz 
-                    dest: /tmp
+                    url: "{{ hue_url }}"
+                    dest: "{{ dest_dir }}"
                     mode: '0660'
 
           - name: unarchive hue file
             unarchive: 
-                    src: /tmp/hue-4.10.0.tgz
-                    dest: /tmp/hue-4.10.0
+                    src: "{{ dest_dir }}/{{ file_name }}.tgz"
+                    dest: "{{ dest_dir }}/{{ file_name }}"
                     remote_src: True
                     owner: hue
                     group: hue
 
           - name: create symlink /opt/hue
             file: 
-                    src: /tmp/hue-4.10.0
-                    dest: /tmp/hue
+                    src: "{{ dest_dir }}/{{ file_name }}"
+                    dest: "{{ dest_dir }}/hue"
                     state: link
                     owner: hue
                     group: hue
