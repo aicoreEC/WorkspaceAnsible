@@ -6,6 +6,7 @@
     ansible.builtin.stat:
       path: /etc/foo.conf
       register: st
+      ignore_errors: True
 
   - debug:
       var: st
